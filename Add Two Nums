@@ -1,0 +1,36 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ListNode AddTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode finaNode=new ListNode(0);//定义这个是为了确定链表起始位置
+        ListNode q=l1;
+        ListNode p=l2;
+        ListNode curr=finaNode;//实际操作的链表初始的节点
+        int nextval=0;
+        while(q!=null||p!=null){
+            int x,y,sum;
+            if(q!=null){
+                x=q.val;
+            }else x=0;
+            if(p!=null){
+                y=p.val;
+            }else y=0;
+            sum=x+y+nextval;
+            nextval=sum/10;
+            curr.next=new ListNode(sum%10);
+            curr=finaNode.next;
+            if(q!=null) q=q.next;
+            if(p!=null) p=p.next;
+        }
+        if(nextval>0){//如果链表已结结束了，但是最后一位的和大于10，就在申请一个空间存放1
+            curr.next=new ListNode(1);
+        }
+        return finaNode.next;//这个是表头，后续的是链表数据curr
+    }  
+}
