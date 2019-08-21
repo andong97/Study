@@ -11,7 +11,7 @@ public class Solution {
         ListNode finaNode=new ListNode(0);//定义这个是为了确定链表起始位置
         ListNode q=l1;
         ListNode p=l2;
-        ListNode curr=finaNode;//实际操作的链表初始的节点
+        ListNode curr=finaNode;//实际操作的链表初始的节点数据
         int nextval=0;
         while(q!=null||p!=null){
             int x,y,sum;
