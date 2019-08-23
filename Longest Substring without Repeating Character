@@ -23,4 +23,20 @@ public class Solution {
     }
 }
 
-//
+//滑动窗口查找
+public class Solution {
+    public int LengthOfLongestSubstring(string s) {
+        int i=0,j=0,Mlen=0;
+        HashSet<char> settmp = new HashSet<char>();
+        while(i<s.Length&&j<s.Length){
+            if(!settmp.Contains(s[j])){
+                settmp.Add(s[j++]);
+                Mlen=Math.Max(Mlen,j-i);
+                //j++;
+            }else{
+                settmp.Remove(s[i++]);
+            }
+        }
+        return Mlen;
+    }
+}
