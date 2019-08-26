@@ -1,0 +1,29 @@
+//在不考虑时间复杂度的情况下的代码，暴力计算
+public class Solution {
+    public double FindMedianSortedArrays(int[] nums1, int[] nums2) {
+        int[] tmp=Sort(nums1,nums2);
+        int index=tmp.Length/2;
+        double num;
+        if(tmp.Length%2!=0){
+            num=(double)tmp[index];
+        }else {
+            num=(double)(tmp[index]+tmp[index-1])/2;
+        }
+        return num;
+    }
+    
+    public int[] Sort(int[] targetOne,int[] targetTwo){
+        int[] tmp=new int[targetOne.Length+targetTwo.Length];
+        int m=0,i=0,j=0;
+        while(i<targetOne.Length&&j<targetTwo.Length){
+            tmp[m++]=targetOne[i]<targetTwo[j]?targetOne[i++]:targetTwo[j++];
+        }
+        while(i<targetOne.Length){
+            tmp[m++]=targetOne[i++];
+        }
+        while(j<targetTwo.Length){
+            tmp[m++]=targetTwo[j++];
+        }
+        return tmp;
+    }
+}
