@@ -1,0 +1,22 @@
+//暴力法翻转
+public class Solution {
+    public int Reverse(int x) {
+        int tmp;
+        string s1 = x.ToString();
+        string s2 = "";
+        if (x < 0)
+        {
+            s1 = s1.Substring(1,s1.Length-1);
+        }
+        for (int i = 1; i <= s1.Length; i++) {
+            s2 += s1[s1.Length - i];
+        }
+        if(!int.TryParse(s2,out tmp)) {
+            tmp = 0;
+        }
+        if (x < 0) {
+            tmp *= -1;
+        }
+        return tmp;
+    }
+}
