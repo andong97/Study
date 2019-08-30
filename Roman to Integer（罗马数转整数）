@@ -1,0 +1,86 @@
+//穷举法，傻瓜的if..else
+public class Solution {
+      public int RomanToInt(string s) {
+        int tmp = 0;
+        bool Last;
+        for (int i = 0; i < s.Length; i+=0) {
+            if (i == s.Length - 1)
+            {
+                Last = true;
+            }
+            else
+                Last = false;
+            switch (s[i]) {
+                case 'I':
+                    if (!Last && s[i + 1] == 'V')
+                    {
+                        tmp += 4;
+                        i += 2;
+                    }
+                    else if (!Last&&s[i + 1] == 'X')
+                    {
+                        tmp += 9;
+                        i += 2;
+                    }
+                    else {
+                        tmp += 1;
+                        i++;
+                    }
+                    break;
+                case 'V':
+                    tmp += 5;
+                    i++;
+                    break;
+                case 'X':
+                    if (!Last&&s[i + 1] == 'L')
+                    {
+                        tmp += 40;
+                        i += 2;
+                    }
+                    else if (!Last&&s[i + 1] == 'C')
+                    {
+                        tmp += 90;
+                        i += 2;
+                    }
+                    else {
+                        tmp += 10;
+                        i++;
+                    }
+                    break;
+                case 'L':
+                    tmp += 50;
+                    i++;
+                    break;
+                case 'C':
+                    if (!Last&&s[i + 1] == 'D')
+                    {
+                        tmp += 400;
+                        i += 2;
+                    }
+                    else if (!Last&&s[i + 1] == 'M')
+                    {
+                        tmp += 900;
+                        i += 2;
+                    }
+                    else {
+                        tmp += 100;
+                        i++;
+                    }
+                    break;
+                case 'D':
+                    tmp += 500;
+                    i++;
+                    break;
+                case 'M':
+                    tmp += 1000;
+                    i++;
+                    break;
+            }
+        }
+        return tmp;
+    }
+}
+
+
+//Hash表
+
