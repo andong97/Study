@@ -1,0 +1,33 @@
+public class Solution {
+    //解题思路：将数字转换成字符串然后一一对比
+    public bool IsPalindrome(int x) {
+        if(x<0){
+            return false;
+        }
+        string s = x.ToString();
+        int i = 0;
+        while (i < (s.Length +1) *0.5f) {
+            if (s[i] != s[s.Length - i - 1]) {
+                return false;
+            }
+            i++;
+        }
+        return true;
+    }
+    
+    //解题思路：通过求出后半部分的数字的回文数，对比该后半部分与前半部分是否相等
+    public bool IsPalindrome(int x){
+        if(x<10||(x%10==0&&x!=0)){
+            return false;
+        }
+        int revnum=0;
+        while(x>revnum){
+            revnum=revnum*10+x%10;
+            x=x/10;
+        }
+        if(x==revnum||x==revnum/10){
+            return true;
+        }else
+            return false;
+    }
+}
